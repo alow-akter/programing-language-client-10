@@ -1,7 +1,11 @@
 import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const SingleCard = ({ card }) => {
-    const { title, image_url, name, total_view, price } = card
+    const { title, image_url, name, total_view, price } = card;
+    const { handleCourse } = useContext(AuthContext)
+
     return (
         <div className='w-10/12 mx-auto m-2'>
             <div className="card w-[350px] h-[500px] shadow-xl  bg-[#D6A7C4] text-black">
@@ -14,7 +18,7 @@ const SingleCard = ({ card }) => {
                     <p> total view: {total_view}</p>
                     <p> price: {price}</p>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Enroll Now</button>
+                        <button onClick={() => handleCourse(card)} className="btn btn-primary">Enroll Now</button>
                     </div>
                 </div>
             </div>

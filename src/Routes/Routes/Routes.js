@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blogs from "../../All-Couse/Blogs/Blogs";
+import CheckOut from "../../All-Couse/CheckOut/CheckOut";
 import Course from "../../All-Couse/Course/Course";
+import DetailsPage from "../../All-Couse/DetailsPage/DetailsPage";
 import Home from "../../All-Couse/Home/Home";
 import Login from "../../Athentiction/Login/Login";
 import SingUp from "../../Athentiction/Sing-Up/SingUp";
@@ -35,6 +37,14 @@ export const routes = createBrowserRouter([
             {
                 path: '/singUp',
                 element: <SingUp></SingUp>
+            },
+            {
+                path: '/detailsPage',
+                element: <DetailsPage></DetailsPage>
+            },
+            {
+                path: '/checkOut',
+                element: <CheckOut></CheckOut>
             }
         ]
 
