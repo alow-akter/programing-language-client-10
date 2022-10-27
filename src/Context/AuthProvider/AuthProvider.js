@@ -11,7 +11,7 @@ const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState()
     const [courses, setCourse] = useState([])
-    console.log(user)
+    const [loading, setLoading] = useState(true)
 
     const googleProviderLogin = (provider) => {
         return signInWithPopup(auth, provider)
@@ -25,17 +25,21 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const logIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
+
     }
 
     const handleCourse = (selectedCourse) => {
         setCourse([...courses, selectedCourse])
     }
 
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log(' inside auth state change', currentUser)
             setUser(currentUser)
+            setLoading(false)
         });
         return () => {
             unsubscribe()
@@ -43,7 +47,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
 
-    const authInfo = { user, googleProviderLogin, logOut, createUser, logIn, handleCourse, courses }
+    const authInfo = { user, loading, googleProviderLogin, logOut, createUser, logIn, handleCourse, courses }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

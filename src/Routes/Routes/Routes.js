@@ -8,16 +8,14 @@ import Home from "../../All-Couse/Home/Home";
 import Login from "../../Athentiction/Login/Login";
 import SingUp from "../../Athentiction/Sing-Up/SingUp";
 import Main from "../../Layout/Main";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
         children: [
-            {
-                path: '/ ',
-                element: <Home></Home>
-            },
+
             {
                 path: '/home',
                 element: <Home></Home>
@@ -45,7 +43,9 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/checkOut',
-                element: <CheckOut></CheckOut>
+                element: <PrivetRoute>
+                    <CheckOut></CheckOut>
+                </PrivetRoute>
             },
             {
                 path: '*',
