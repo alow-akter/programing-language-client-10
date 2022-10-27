@@ -5,7 +5,11 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+    const handelLogout = () => {
+        logOut()
+            .then(error => console.error(error))
+    }
     return (
         <div>
             <div className="navbar bg-[#A9B7B0] ">
@@ -22,9 +26,24 @@ const Header = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="navbar-center">
-                    <Link to="/home" className="btn btn-ghost normal-case text-xl bg-gray-500 text-white">Programing Language </Link>
-                    <h3 className='m-3'>{user?.displayName}</h3>
+                <div className="navbar-center gap-5">
+                    <Link to="/home" className="btn btn-ghost normal-case text-xl bg-gray-500 text-white ">Programing Language </Link>
+                    <div>
+                        {
+                            user?.uid ?
+                                <>
+                                    <h3 className='m-3'>{user?.displayName}</h3>
+                                    <button onClick={handelLogout} className='bg-[#C20095] rounded px-3'>log out</button>
+                                </>
+                                :
+                                <>
+                                    <Link className='bg-[#8F9A98] hover:bg-[#f378d6] px-3 py-1 m-2 rounded' to='/login'>Login</Link>
+                                    <Link className=' bg-[#8F9A98] hover:bg-[#f378d6] px-3 py-1 gap-3 rounded' to='/singUp'>SingUp</Link>
+
+                                </>
+                        }
+                    </div>
+
                 </div>
                 <div className="navbar-end">
                     <label

@@ -1,11 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 
+
+
 const Login = () => {
+
+    const navigate = useNavigate()
+
+    const { logIn } = useContext(AuthContext)
+
+    const handleSubmit = event => {
+        event.preventDefault()
+        const from = event.target;
+        const email = from.email.value;
+        const password = from.password.value;
+        console.log(email, password)
+
+        logIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                from.reset()
+                navigate('/course')
+            })
+            .catch(error => console.error(error))
+
+    }
+
     const { googleProviderLogin } = useContext(AuthContext)
 
     const googleProvider = new GoogleAuthProvider()
@@ -28,7 +53,7 @@ const Login = () => {
                         <p className="py-6">Please give some information </p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <div className="card-body">
+                        <form onSubmit={handleSubmit} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -51,7 +76,7 @@ const Login = () => {
                             <div className="form-control mt-6 ">
                                 <button onClick={handleGoogleSingIn} className="btn btn-secondary gap-2"><FaGoogle className='w-10 h-4'></FaGoogle>Google</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
