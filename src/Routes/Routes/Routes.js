@@ -3,6 +3,7 @@ import Blogs from "../../All-Couse/Blogs/Blogs";
 import CheckOut from "../../All-Couse/CheckOut/CheckOut";
 import Course from "../../All-Couse/Course/Course";
 import DetailsPage from "../../All-Couse/DetailsPage/DetailsPage";
+import Error from "../../All-Couse/Error/Error";
 import Home from "../../All-Couse/Home/Home";
 import Login from "../../Athentiction/Login/Login";
 import SingUp from "../../Athentiction/Sing-Up/SingUp";
@@ -45,6 +46,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/checkOut',
                 element: <CheckOut></CheckOut>
+            },
+            {
+                path: '*',
+                element: <Error></Error>
             }
         ]
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blogs = () => {
     return (
-        <div className='lg:w-8/12 mx-auto gap-9 mt-5' >
+        <div className='lg:w-8/12 mx-auto gap-9 mt-5 bg-[#A9B7AE] p-9' >
 
             <div class="space-y-4">
                 <details class="group" open>

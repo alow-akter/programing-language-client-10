@@ -23,7 +23,7 @@ const Course = () => {
                         course.map(card => <SingleCard key={card._id} card={card}></SingleCard>)
                     }
                 </div>
-                <div className='grid grid-cols-1 col-span-2 bg-[#a4b9ce]'>
+                <div className='grid grid-cols-1 col-span-2 bg-[#cfe3d6]'>
                     <ul>
                         {
                             courses.map((java, idx) => <SelectedCard key={idx} java={java}></SelectedCard>)
