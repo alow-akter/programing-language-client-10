@@ -8,7 +8,7 @@ const SingleCard = ({ card }) => {
 
     return (
         <div className='w-10/12 mx-auto m-2'>
-            <div className="card w-[350px] h-[500px] shadow-xl  bg-[#D6A7C4] text-black">
+            <div className="card lg:w-[350px] lg:h-[500px] shadow-xl  bg-[#A9B7AF] text-black">
                 <figure className="px-10 pt-10">
                     <img src={image_url} alt="Shoes" className="w-[300px] h-[200px]" />
                 </figure>

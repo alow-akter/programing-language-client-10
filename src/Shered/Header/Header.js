@@ -27,7 +27,8 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="navbar-center gap-5">
-                    <Link to="/home" className="btn btn-ghost normal-case text-xl bg-gray-500 text-white ">Programing Language </Link>
+                    <Link to="/home" className=" normal-case text-xl text-white hidden lg:block"><p className='pt-2 text-[#C20095]'>Programing Language</p>
+                    </Link>
                     <div>
                         {
                             user?.uid ?
@@ -56,6 +57,7 @@ const Header = () => {
                         <span className="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-slate-900"></span>
 
                         <span className="absolute inset-0 m-1 h-6 w-6 rounded-full bg-white transition peer-checked:translate-x-6"></span>
+
                     </label>
                     <FaUserAlt className='w-20 h-7'></FaUserAlt>
                 </div>

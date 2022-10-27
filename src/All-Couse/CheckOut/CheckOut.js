@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import React from 'react';
+
 
 const CheckOut = () => {
-    const { user } = useContext(AuthContext)
     return (
         <div className='w-4/12 mx-auto mt-8'>
             <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-orange-400 font-semibold">

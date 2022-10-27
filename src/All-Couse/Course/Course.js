@@ -18,12 +18,12 @@ const Course = () => {
     return (
         <div>
             <div className='grid lg:grid-cols-9'>
-                <div className='grid grid-cols-2 col-span-7 gap-10  bg-white'>
+                <div className='grid lg:grid-cols-2 col-span-7 justify-center lg:gap-10  bg-white'>
                     {
                         course.map(card => <SingleCard key={card._id} card={card}></SingleCard>)
                     }
                 </div>
-                <div className='grid grid-cols-1 col-span-2 bg-red-500'>
+                <div className='grid grid-cols-1 col-span-2 bg-[#a4b9ce]'>
                     <ul>
                         {
                             courses.map((java, idx) => <SelectedCard key={idx} java={java}></SelectedCard>)
