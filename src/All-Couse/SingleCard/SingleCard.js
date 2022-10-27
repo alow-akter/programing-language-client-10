@@ -14,7 +14,7 @@ const SingleCard = ({ card }) => {
                     <p> total view: {total_view}</p>
                     <p> price: {price}</p>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button className="btn btn-primary">Enroll Now</button>
                     </div>
                 </div>
             </div>

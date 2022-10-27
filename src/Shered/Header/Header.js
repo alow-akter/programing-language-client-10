@@ -1,7 +1,11 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
+    const { user } = useContext(AuthContext)
     return (
         <div>
             <div className="navbar bg-[#A9B7B0] ">
@@ -12,13 +16,15 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <Link to='/course'>Course</Link>
-                            <li><a>Portfolio</a></li>
-                            <li><a>About</a></li>
+                            <Link to='/blogs'>Blogs</Link>
+                            <Link to='/login'>Login</Link>
+                            <Link to='/SingUp'>SingUp</Link>
                         </ul>
                     </div>
                 </div>
                 <div className="navbar-center">
                     <Link to="/home" className="btn btn-ghost normal-case text-xl bg-gray-500 text-white">Programing Language </Link>
+                    <h3 className='m-3'>{user?.displayName}</h3>
                 </div>
                 <div className="navbar-end">
                     <label
@@ -28,11 +34,11 @@ const Header = () => {
                             type="checkbox"
                             id="AcceptConditions"
                             className="peer sr-only" />
-
-                        <span className="absolute inset-0 rounded-full bg-purple-600 transition peer-checked:bg-slate-900"></span>
+                        <span className="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-slate-900"></span>
 
                         <span className="absolute inset-0 m-1 h-6 w-6 rounded-full bg-white transition peer-checked:translate-x-6"></span>
                     </label>
+                    <FaUserAlt className='w-20 h-7'></FaUserAlt>
                 </div>
             </div>
         </div>
