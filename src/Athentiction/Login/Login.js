@@ -14,9 +14,9 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    const [error, setError] = useState('')
-
     const { logIn } = useContext(AuthContext)
+
+    const [error, setError] = useState('')
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -34,7 +34,6 @@ const Login = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
-
                 console.error(error)
                 setError(error.message)
             })
@@ -64,6 +63,7 @@ const Login = () => {
                     <div className="text-center">
                         <h1 className="text-5xl font-bold">Please Login now!</h1>
                         <p className="py-6">Please give some information </p>
+
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit} className="card-body">
@@ -86,13 +86,11 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                             </div>
+
                             <div className="form-control mt-6 ">
                                 <button onClick={handleGoogleSingIn} className="btn btn-secondary gap-2"><FaGoogle className='w-10 h-4'></FaGoogle>Google</button>
-                                <div className='text-white'>
-                                    <p>{error}</p>
-                                </div>
+                                {error}
                             </div>
-
                         </form>
                     </div>
                 </div>
