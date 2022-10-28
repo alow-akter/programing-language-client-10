@@ -4,6 +4,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { useState } from 'react';
 
 
 
@@ -12,6 +13,8 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+
+    const [error, setError] = useState('')
 
     const { logIn } = useContext(AuthContext)
 
@@ -27,9 +30,15 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 from.reset()
+                setError('')
                 navigate(from, { replace: true })
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+
+                console.error(error)
+                setError(error.message)
+            })
+
 
     }
 
@@ -43,7 +52,9 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
             })
-            .catch(error => console.error(error))
+            .catch(error =>
+                console.error(error)
+            )
     }
 
     return (
@@ -77,7 +88,11 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6 ">
                                 <button onClick={handleGoogleSingIn} className="btn btn-secondary gap-2"><FaGoogle className='w-10 h-4'></FaGoogle>Google</button>
+                                <div className='text-white'>
+                                    <p>{error}</p>
+                                </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
