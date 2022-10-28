@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
@@ -6,6 +7,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 const SingUp = () => {
 
     const { createUser } = useContext(AuthContext)
+    const [error, setError] = useState('')
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -20,9 +22,15 @@ const SingUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                setError('')
                 from.reset()
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+
+            })
+
 
     }
 
@@ -62,6 +70,7 @@ const SingUp = () => {
                                 <label className="label">
                                     <p>Already have an account </p>
                                     <Link to='/login'>login  <hr /></Link>
+                                    <p>{error}</p>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
